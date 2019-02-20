@@ -11,10 +11,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var Vue = _interopDefault(require('vue'));
 
-// The rational behind the verbose Reflect-feature check below is the fact that there are polyfills
-// which add an implementation for Reflect.defineMetadata but not for Reflect.getOwnMetadataKeys.
-// Without this check consumers will encounter hard to track down runtime errors.
-var reflectionIsSupported = typeof Reflect !== 'undefined' && Reflect.defineMetadata && Reflect.getOwnMetadataKeys;
+var reflectionIsSupported = typeof Reflect !== 'undefined' && Reflect.defineMetadata;
 function copyReflectionMetadata(to, from) {
     forwardMetadata(to, from);
     Object.getOwnPropertyNames(from.prototype).forEach(function (key) {
