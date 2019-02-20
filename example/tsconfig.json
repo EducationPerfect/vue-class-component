@@ -1,21 +1,15 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
-    "module": "es2015",
+    "target": "es5",
+    "module": "system",
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "jsx": "preserve",
-    "jsxFactory": "h"
+    "jsxFactory": "h",
+    "noImplicitUseStrict": true,
   },
   "include": [
-    "./**/*.ts"
+    "./**/*",
   ],
   "compileOnSave": false
 }

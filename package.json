@@ -56,16 +56,20 @@
     "rimraf": "^2.6.2",
     "rollup": "^0.66.5",
     "rollup-plugin-replace": "^2.0.0",
+    "systemjs": "0.19.47",
+    "systemjs-plugin-css": "0.1.37",
+    "systemjs-plugin-text": "0.0.11",
     "testdouble": "^3.5.0",
     "ts-loader": "^5.2.1",
     "typescript": "^3.1.1",
     "typescript-eslint-parser": "^20.0.0",
     "uglify-js": "^3.3.10",
-    "vue": "^2.5.13",
+    "vue": "2.5.16",
     "vue-loader": "^15.4.2",
     "vue-template-compiler": "^2.5.13",
     "vuex": "^3.0.1",
     "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "vue-class-component": "7.0.1"
   }
 }

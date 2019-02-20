@@ -1,43 +1,15 @@
-<template>
-  <div>
-    <input v-model="msg">
-    <p>prop: {{ propMessage }}</p>
-    <p>msg: {{ msg }}</p>
-    <p>helloMsg: {{ helloMsg }}</p>
-    <p>computed msg: {{ computedMsg }}</p>
-    <Hello ref="helloComponent" />
-    <World />
-
-    <p>
-      <button @click="greet">Greet</button>
-    </p>
-
-    <p>
-      Clicked: {{ count }} times
-      <button @click="increment">+</button>
-    </p>
-  </div>
-</template>
-
-<script lang="ts">
 import Vue from 'vue'
-import Component from '../../lib/index'
-import Hello from './components/Hello.vue'
-import World from './components/World'
+import Component from "vue-class-component";
+import Hello from './components/Hello'
 import { mapState, mapMutations } from 'vuex'
+import template from "./app.html";
 
 // We declare the props separately
 // to make props types inferable.
-const AppProps = Vue.extend({
-  props: {
-    propMessage: String
-  }
-})
 
 @Component({
   components: {
-    Hello,
-    World
+    Hello
   },
 
   // Vuex's component binding helper can use here
@@ -46,14 +18,18 @@ const AppProps = Vue.extend({
   ]),
   methods: mapMutations([
     'increment'
-  ])
+  ]),
+  props: ["propMessage"],
+  template: template
 })
-export default class App extends AppProps {
+export default class App extends Vue {
   // inital data
   msg: number = 123
 
+  propMessage: string = "";
+
   // use prop values for initial data
-  helloMsg: string = 'Hello, ' + this.propMessage
+  helloMsg: string = 'Hellos, ' + this.propMessage
 
   // annotate refs type
   $refs!: {
@@ -64,6 +40,11 @@ export default class App extends AppProps {
   // when you declare some properties in `Component` decorator
   count!: number
   increment!: () => void
+
+  beforeMount(): void
+  {
+    console.log("cheesE");
+  }
 
   // lifecycle hook
   mounted () {
@@ -77,7 +58,7 @@ export default class App extends AppProps {
 
   // method
   greet () {
-    alert('greeting: ' + this.msg)
+    // alert('greeting: ' + this.msg)
     this.$refs.helloComponent.sayHello()
   }
 
@@ -86,4 +67,3 @@ export default class App extends AppProps {
     this.$store.dispatch('incrementIfOdd')
   }
 }
-</script>
